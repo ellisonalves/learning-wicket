@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Apache Wicket - Templating</title>
+</head>
+<body>
+	<div id="header" wicket:id="headerPanel">header</div>
+	<div id="body">
+		<div id="menu" wicket:id="menuPanel">menu</div>
+		<div id="content" wicket:id="contentComponent">content</div>
+	</div>
+	<div id="footer" wicket:id="footerPanel">footer</div>
+	
+	<!-- Moidifying tag attributes  -->
+	<h1>Modifying tag attributes</h1>
+	<span wicket:id="simpleLabel"></span>
+	
+	<!-- Creating in-line panels with WebMarkupContainer  -->
+	<div wicket:id="informationBox">
+		You've got <span wicket:id="messagesNumber"></span> new messages.
+	</div>
+	
+</body>
+
+</html>
