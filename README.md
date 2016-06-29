@@ -6,7 +6,29 @@ This document is about my study of Wicket 7.3.0.
 [WicketStuff] (https://github.com/wicketstuff/core)
 
 ## General Wicket Configuration
-To configure wicket you need to extend a class called WebApplication (org.apache.wicket.protocol.http.WebApplication) and override its methods.
+To configure wicket you need to extend a class called WebApplication (org.apache.wicket.protocol.http.WebApplication) and override its methods. Your WebApplication class will looks like this:
+
+```
+public class WicketApplication extends WebApplication {
+
+	/**
+	 * @see org.apache.wicket.Application#getHomePage()
+	 */
+	@Override
+	public Class<? extends WebPage> getHomePage() {
+		return MainTemplate.class;
+	}
+
+	/**
+	 * @see org.apache.wicket.Application#init()
+	 */
+	@Override
+	public void init() {
+		super.init();
+	}
+}
+```
+
 At this first moment, you will need to override two methods:
 - **getHomePage()** -> As its name says, it will define the HomePage class. 
 - **init()** -> Inside this method we can define several settings of wicket like as:
