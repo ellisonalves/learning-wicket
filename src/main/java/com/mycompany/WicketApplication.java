@@ -115,19 +115,16 @@ public class WicketApplication extends WebApplication {
 	
 	@Override
 	public MarkupSettings getMarkupSettings() {
-		// TODO Auto-generated method stub
 		return super.getMarkupSettings();
 	}
 	
 	@Override
 	public RequestCycleListenerCollection getRequestCycleListeners() {
-		// TODO Auto-generated method stub
 		return super.getRequestCycleListeners();
 	}
 	
 	@Override
 	public IProvider<IExceptionMapper> getExceptionMapperProvider() {
-		// TODO Auto-generated method stub
 		return super.getExceptionMapperProvider();
 	}
 	
