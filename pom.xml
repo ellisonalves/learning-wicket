@@ -19,7 +19,7 @@
 	<version>1.0-SNAPSHOT</version>
 	<!-- TODO project name -->
 	<name>learningwicket</name>
-	
+
 	<!-- <organization> <name>company name</name> <url>company url</url> </organization> -->
 	<licenses>
 		<license>
@@ -31,6 +31,7 @@
 
 	<modules>
 		<module>quickstart</module>
+		<module>links-and-url-generation</module>
 	</modules>
 	<inceptionYear>2016</inceptionYear>
 	<description>The project is to organizing my learning.</description>
