@@ -6,9 +6,13 @@ import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.pages.ExceptionErrorPage;
 import org.apache.wicket.markup.html.pages.PageExpiredErrorPage;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.request.IExceptionMapper;
 import org.apache.wicket.request.cycle.IRequestCycleListener;
+import org.apache.wicket.request.cycle.RequestCycleListenerCollection;
 import org.apache.wicket.serialize.java.JavaSerializer;
 import org.apache.wicket.settings.ExceptionSettings;
+import org.apache.wicket.settings.MarkupSettings;
+import org.apache.wicket.util.IProvider;
 import org.apache.wicket.util.lang.Bytes;
 
 /**
@@ -99,8 +103,33 @@ public class WicketApplication extends WebApplication {
 
 		// show no exception page when an unexpected exception is thrown
 		getExceptionSettings().setUnexpectedExceptionDisplay(ExceptionSettings.SHOW_NO_EXCEPTION_PAGE);
+		
+		// Default setting. It will render the configured error page. 
+		getExceptionSettings().setAjaxErrorHandlingStrategy(ExceptionSettings.AjaxErrorStrategy.REDIRECT_TO_ERROR_PAGE);
+		
+		// Wicket will call the javascript onFailure callback
+		getExceptionSettings().setAjaxErrorHandlingStrategy(ExceptionSettings.AjaxErrorStrategy.INVOKE_FAILURE_HANDLER);
 
 		mountPage("/SwappingLabels", SwappingLabels.class);	
 	}
+	
+	@Override
+	public MarkupSettings getMarkupSettings() {
+		// TODO Auto-generated method stub
+		return super.getMarkupSettings();
+	}
+	
+	@Override
+	public RequestCycleListenerCollection getRequestCycleListeners() {
+		// TODO Auto-generated method stub
+		return super.getRequestCycleListeners();
+	}
+	
+	@Override
+	public IProvider<IExceptionMapper> getExceptionMapperProvider() {
+		// TODO Auto-generated method stub
+		return super.getExceptionMapperProvider();
+	}
+	
 
 }

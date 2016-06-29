@@ -59,6 +59,8 @@ At this first moment, you will need to override two methods:
 		- **ExceptionSettings.SHOW_EXCEPTION_PAGE**, show the default developer page.
 		- **ExceptionSettings.SHOW_INTERNAL_ERROR_PAGE**, show internal error page.
 		- **ExceptionSettings.SHOW_NO_EXCEPTION_PAGE**, show no exception page when an unexpected exception is thrown.
+		- It is possible to override getExceptionMapperProvider() in order to use custom mapper exception.
+		- To handle ajax errors, wicket will render the configured error page by default. If you want to handle it on javascript onFailure callback it is necessary add this setting in getExceptionSettings().setAjaxErrorHandlingStrategy(ExceptionSettings.AjaxErrorStrategy.INVOKE_FAILURE_HANDLER); 
 		
 		
 		
