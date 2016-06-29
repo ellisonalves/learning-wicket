@@ -4,7 +4,6 @@ import org.apache.wicket.DefaultMarkupIdGenerator;
 import org.apache.wicket.ISessionListener;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.pages.ExceptionErrorPage;
-import org.apache.wicket.markup.html.pages.InternalErrorPage;
 import org.apache.wicket.markup.html.pages.PageExpiredErrorPage;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.cycle.IRequestCycleListener;
@@ -40,27 +39,23 @@ public class WicketApplication extends WebApplication {
 		// Other options to serialization:
 		// - https://github.com/EsotericSoftware/kryo
 		// - http://ruedigermoeller.github.io/fast-serialization/
-		// these serialization libraries are provided by wicketStuff
-		// project.
+		// these serialization libraries are provided by wicketStuff project.
 		getFrameworkSettings().setSerializer(new JavaSerializer(APPLICATION_KEY));
 
 		// Strategy of markup id generator
 		getMarkupSettings().setMarkupIdGenerator(new DefaultMarkupIdGenerator());
 
-		// There are two cache levels that wicket allow to set: cache and
-		// page
+		// There are two cache levels that wicket allow to set: cache and page
 		// store file.
 		// This method set the size for page store file
 		getStoreSettings().setMaxSizePerSession(Bytes.kilobytes(500));
 
-		// This method sets the maximum number of page instances that will
-		// be
+		// This method sets the maximum number of page instances that will be
 		// saved into application-scoped cache:
 		getStoreSettings().setInmemoryCacheSize(50);
 
 		// Page Expiration
-		// When we try to access a page id that is not inside a session it
-		// is
+		// When we try to access a page id that is not inside a session it is
 		// expired.
 		// To set a custom page when view expire, just set the method
 		// getApplicationSettings().setPageExpiredErrorPage(MyCustomPage.class);
@@ -105,7 +100,7 @@ public class WicketApplication extends WebApplication {
 		// show no exception page when an unexpected exception is thrown
 		getExceptionSettings().setUnexpectedExceptionDisplay(ExceptionSettings.SHOW_NO_EXCEPTION_PAGE);
 
-		mountPage("/SwappingLabels", SwappingLabels.class);
+		mountPage("/SwappingLabels", SwappingLabels.class);	
 	}
 
 }
