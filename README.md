@@ -10,8 +10,8 @@ To run the modules, you just:
 
 ## Wicket usefull links
 
-[WicketStuff] (https://github.com/wicketstuff/core)
-[Wicket-tutorial-examples] (https://github.com/bitstorm/Wicket-tutorial-examples)
+- [WicketStuff] (https://github.com/wicketstuff/core)
+- [Wicket-tutorial-examples] (https://github.com/bitstorm/Wicket-tutorial-examples)
 		
 
 ## Quickstart

@@ -22,6 +22,22 @@ public class HomePage extends WebPage {
 				setResponsePage(PageWithParameters.class, parameters);
 			}
 		});
+
+		add(new Link<Object>("pageWithNamedIndexParam") {
+
+			private static final long	serialVersionUID	= 1L;
+
+			@Override
+			public void onClick() {
+				PageParameters parameters = new PageParameters();
+				parameters.set(0, "foo");
+				parameters.set(1, "bar");
+				parameters.add("baz", "baz");
+
+				setResponsePage(PageWithParameters.class, parameters);
+			}
+
+		});
 	}
 
 }
