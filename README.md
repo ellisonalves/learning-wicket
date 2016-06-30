@@ -3,6 +3,11 @@ This document is about my study of Wicket 7.3.0.
 
 All directories of samples were created using the quick start from wicket official home page.
 
+To run the modules, you just:
+- to have maven installed on your environment;
+- to move to the project you want to see running;
+- run the maven command: mvn jetty:run
+
 ## Wicket usefull links
 
 [WicketStuff] (https://github.com/wicketstuff/core)
