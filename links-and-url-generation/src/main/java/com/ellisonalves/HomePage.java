@@ -88,5 +88,20 @@ public class HomePage extends WebPage {
 				setResponsePage(StatelessPackageMounted.class);
 			}
 		});
+
+		add(new Link<Object>("controllingPageParameters") {
+
+			private static final long	serialVersionUID	= 1L;
+
+			@Override
+			public void onClick() {
+				PageParameters parameters = new PageParameters();
+				parameters.add("fooParam", "fooValue");
+				parameters.add("barParam", "barValue");
+				
+				setResponsePage(MountedPage.class, parameters);
+			}
+
+		});
 	}
 }

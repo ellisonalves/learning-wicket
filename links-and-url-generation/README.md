@@ -231,6 +231,7 @@ add(new Link<Object>("mountedPageWithPlaceholder") {
 
 		});
 ´´´
+
 - The result url is <Application path>/pageMount/foo/otherSegment
 - Placeholder can be declared as optional using the '#' instead of '$' and in this case, if you don't inform the parameter, the result url is <Application path>/pageMount/otherSegment
 
@@ -255,3 +256,82 @@ mountPackage("/mountPackage", StatefulPackageMount.class);
 The implementation of the mountPackage method mounts an instance of org.apache.wicket.request.mapper.PackageMapper to the given path.
 
 #### Providing custom mapper context to request mappers
+The Interface org.apache.wicket.request.mapper.IMapperContext is used by request mappers to create new page instances and to retrieve static URL segments used to build and parse page URLs. These segments are:
+- Namespace. It's the first URL segment of non-mounted pages;
+- Identifier for non-bookmarkable URLs. It's the segment that identifies no bookmarkable pages; 
+- Identifier for bookmarkable URLs. It's is the segment that identifies bookmarkable pages;
+- Identifier for resources. It's the segment that identifies Wicket resources.
+
+To customize the default wicket's mapper strategy you should extends the class DefaultMapperContext and use it in your WicketApplication class:
+```
+@Override
+	protected IMapperContext newMapperContext() {
+		return new DefaultMapperContext() {
+			@Override
+			public String getBookmarkableIdentifier() {
+				return super.getBookmarkableIdentifier();
+			}
+			
+			@Override
+			public String getPageIdentifier() {
+				return super.getPageIdentifier();
+			}
+		};
+	}
+```
+
+#### Controlling how page parameters are encoded
+
+The interface org.apache.wicket.request.mapper.parameter.IPageParametersEncoder exposes two methods: 
+1. encodePageParameters() encodes page parameters into an URL;
+2. decodePageParameters() extracts page parameters from the URL;
+
+Wicket comes with a built-in implementation called org.apache.wicket.request.mapper.parameter.UrlPathPageParametersEncoder and it encodes named page parameters as URL segments using the following patter: /paramName1/paramValue1/paramName2 ...
+
+To use it, mount your pages as the follows:
+```
+mount(new MountedMapper("/mountedPath", MountedPage.class, new UrlPathPageParametersEncoder()));
+```
+
+Remember that you can map a package as well:
+```
+mount(new PackageMapper(mountPath, packageName));
+```
+
+And you can create a link:
+```
+add(new Link<Object>("controllingPageParameters") {
+
+			private static final long	serialVersionUID	= 1L;
+
+			@Override
+			public void onClick() {
+				PageParameters parameters = new PageParameters();
+				parameters.add("fooParam", "fooValue");
+				parameters.add("barParam", "barValue");
+				
+				setResponsePage(MountedPage.class, parameters);
+			}
+
+		});
+```
+
+The result url will be:
+```
+<APPLICATION_PATH>/mountedPath/fooParam/fooValue/barParam/barValue
+```
+
+#### Encrypting Page URLs
+URLs can expose too many details about the internal structure of our web application. To avoid this kind of security threat we can use the CryptoMapper which wraps an existing mapper and encrypts the original URL producing a single encrypted segment.
+
+CryptoMapper might not be strong enough for production environment. So, just to see how things work, we will need to specify the CryptoMapper in WicketApplication class before all mount, mountPage and mountPackage declarations:
+```
+@Override
+public void init() {
+	super.init();
+	setRootRequestMapper(new CryptoMapper(getRootRequestMapper(), this));
+	
+	// All mount declarations omitted
+}
+
+```
