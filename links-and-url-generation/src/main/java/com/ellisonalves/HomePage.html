@@ -1,13 +1,44 @@
 <!DOCTYPE html>
 <html xmlns:wicket="http://wicket.apache.org">
-	<head>
-		<meta charset="utf-8" />
-		<title>Apache Wicket Quickstart</title>
-		<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:regular,bold' rel='stylesheet' type='text/css' />
-		<link rel="stylesheet" href="style.css" type="text/css" media="screen" title="Stylesheet" />
-	</head>
-	<body>
-		<a wicket:id="pageWithIndexParam">Page with index param</a> <br /><br />
-		<a wicket:id="pageWithNamedIndexParam">Page with named index param</a> 
-	</body>
+<head>
+<meta charset="utf-8" />
+<title>Apache Wicket Quickstart</title>
+<link
+	href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:regular,bold'
+	rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="style.css" type="text/css" media="screen"
+	title="Stylesheet" />
+</head>
+<body>
+	<h1>Parameters</h1>
+	<ul>
+		<li><a wicket:id="pageWithIndexParam">Page with index param</a></li>
+		<li><a wicket:id="pageWithNamedIndexParam">Page with named
+				index param</a></li>
+	</ul>
+
+	<h1>Bookmarkable Page Link</h1>
+	<wicket:link>
+		<ul>
+			<li><a href="HomePage.html">HomePage</a></li>
+			<li><a href="anotherpackage/SubpackagePage.html">SubPackagePage</a></li>
+			<li><a href="StatelessPage.html">StatelessPage</a></li>
+		</ul>
+	</wicket:link>
+
+	<h1>External links</h1>
+	<ul>
+		<li><a wicket:id="externalSite">Search me on Google!</a></li>
+		<li><a wicket:id="dynamicAnchorLabel">Search me on Google!</a></li>
+	</ul>
+
+	<h1>Mounting Pages</h1>
+	<ul>
+		<li><a wicket:id="mountedPage">Mounted Page</a></li>
+		<li><a wicket:id="mountedPageWithPlaceholder">Mounted Page
+				With Placeholder</a></li>
+		<li><a wicket:id="mountedPackageStateful">Mounted Package Stateful</a></li>
+		<li><a wicket:id="mountedPackageStateless">Mounted Package Stateless</a></li>
+	</ul>
+</body>
 </html>
