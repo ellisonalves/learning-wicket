@@ -22,7 +22,6 @@
 	<artifactId>links-and-url-generation</artifactId>
 	<packaging>war</packaging>
 
-	<!-- TODO project name -->
 	<name>links-and-url-generation</name>
 
 	<!-- <organization> <name>company name</name> <url>company url</url> </organization> -->
