@@ -22,7 +22,7 @@ IModel timeStampModel = new Model<String>(){
 add(new Label("timeStamp", timeStampModel));
 ```
 
-You have always to provide an model for your components! If you try to set a model object on a component without a model, you will receive an RuntimeException error. So, you have two options:
+You have always to provide a model for your components! If you try to set a data object on a component without a model, you will receive an RuntimeException error. So, you have two options:
 1. Pass a model. (E.g. new TextField("username", Model.of("")), new PasswordTextField("password", Model.of("")), new Label("loginStatus", Model.of("")) )
 2. Use #setDefaultModel(new AnotherModelImplementation(object)) to change the way how Wicket access its components.
 
@@ -98,14 +98,18 @@ You have always to provide an model for your components! If you try to set a mod
  2. The name of the property we want to read/write (Property expression).
  
 ##### PropertyModel characteristics
- - Support dotted notation to select sub properties (e.g. new PropertyModel(pojoInstance, "property.subProperty"));
- - It is null-safe;
- - It can access Array and List specifying an index (e.g. new PropertyModel(pojoInstance, "arrayOrListProperty.0.objectOfThisArrayOrList"));
- - It can access maps using squared brackets (e.g. new PropertyModel(pojoInstance, "mapProperty[key]".propertyName));
+- Support dotted notation to select sub properties (e.g. new PropertyModel(pojoInstance, "property.subProperty"));
+- It is null-safe;
+- It can access Array and List specifying an index (e.g. new PropertyModel(pojoInstance, "arrayOrListProperty.0.objectOfThisArrayOrList"));
+- It can access maps using squared brackets (e.g. new PropertyModel(pojoInstance, "mapProperty[key]".propertyName));
  
-### CompoundPropertyModel
- It is a particular kind of model which is usually used in conjunction with model inheritance. So, when a component needs to use a model but none has been assigned to it, it will search through the whole container hierarchy for a parent with an inheritable model (implements org.apache.wicket.model.IComponentInheritedModel). Once a CompoundPropertyModel has been inherited by a component, it will behave just like a PropertyModel using the id of the component as property expression.
- 
+### CompoundPropertyModel with Wicket Forms
+It is a particular kind of model which is usually used in conjunction with model inheritance. So, when a component needs to use a model but none has been assigned to it, it will search through the whole container hierarchy for a parent with an inheritable model (implements org.apache.wicket.model.IComponentInheritedModel). Once a CompoundPropertyModel has been inherited by a component, it will behave just like a PropertyModel using the id of the component as property expression.
+
+Wicket provides org.apache.wicket.markup.html.form.Form class to handle web forms. The method onSubmit() is called whenever a form has been submitted and you can override it to perform custom actions. Note that wicket doesn't map the submit button of the html form. So, you just need to use the standard HTML button and Wicket will catch the onSubmit event. 
+
+The purpose of FormComponent is to store the corresponding user input into its model when the form is submitted. The form is responsible for mapping input values to the corresponding components, avoiding us of manually synchronizing models with input fields and vice versa.
+
  In order to assign CompoundPropertyModel to one container of a given component we should use setDefaultModel(new CompoundPropertyModel(pojoInstance)). Let's see an example:
  ```
  public class LoginCompoundPropertyModelForm extends Form<Serializable> {
@@ -165,5 +169,8 @@ You have always to provide an model for your components! If you try to set a mod
 	}
  ```
  
-### Wicket forms
-Wicket provides org.apache.wicket.markup.html.form.Form class to handle web forms. 
+#### Some components until now
+- Label -> Used to bind labels in html file;
+- TextField -> Used to bind text fields in html file, without any particular behavior or restriction on the allowed values;
+- PasswordTextField -> SubType of TextField, must be used with an <input> tag with the attribute type set to "password". By default, it cleans its value at each request and it is required.  
+

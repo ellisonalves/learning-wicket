@@ -25,17 +25,28 @@ public class HomePage extends WebPage {
 
 		add(new Link<Serializable>("gotoLoginFormPropertyModel") {
 			private static final long	serialVersionUID	= 1L;
+
 			@Override
 			public void onClick() {
 				setResponsePage(LoginPagePropertyModel.class);
 			}
 		});
-		
-		add(new  Link<Serializable>("gotoLoginFormCompoundPropertyModel") {
+
+		add(new Link<Serializable>("gotoLoginFormCompoundPropertyModel") {
 			private static final long	serialVersionUID	= 1L;
+
 			@Override
 			public void onClick() {
 				setResponsePage(LoginPageCompoundPropertyModel.class);
+			}
+		});
+
+		add(new Link<Serializable>("gotoDropDownChoiceComponent") {
+			private static final long	serialVersionUID	= 1L;
+
+			@Override
+			public void onClick() {
+				setResponsePage(ComponentDropDownChoice.class);
 			}
 		});
 	}

@@ -30,7 +30,7 @@ public class LoginPagePropertyModel extends WebPage {
 
 		public LoginPropertyModelForm(String id) {
 			super(id);
-
+			
 			add(new TextField<>("username", new PropertyModel<String>(login, "username")),
 					new PasswordTextField("password", new PropertyModel<String>(login, "password")),
 					new Label("loginStatus", new PropertyModel<String>(login, "loginStatus")));
