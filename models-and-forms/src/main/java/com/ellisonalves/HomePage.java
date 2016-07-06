@@ -23,11 +23,11 @@ public class HomePage extends WebPage {
 	public HomePage(final PageParameters parameters) {
 		add(new Label("message", "If you see this message wicket is properly configured and running"));
 
-		add(new Link<Serializable>("gotoLoginFormDefaultModel") {
+		add(new Link<Serializable>("gotoLoginFormPropertyModel") {
 			private static final long	serialVersionUID	= 1L;
 			@Override
 			public void onClick() {
-				setResponsePage(LoginPageDefaultModel.class);
+				setResponsePage(LoginPagePropertyModel.class);
 			}
 		});
 		
