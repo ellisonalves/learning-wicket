@@ -23,13 +23,15 @@ add(new Label("timeStamp", timeStampModel));
 ```
 
 You have always to provide a model for your components! If you try to set a data object on a component without a model, you will receive an RuntimeException error. So, you have two options:
-1. Pass a model. (E.g. new TextField("username", Model.of("")), new PasswordTextField("password", Model.of("")), new Label("loginStatus", Model.of("")) )
-2. Use #setDefaultModel(new AnotherModelImplementation(object)) to change the way how Wicket access its components.
+
+* Pass a model. (E.g. new TextField("username", Model.of("")), new PasswordTextField("password", Model.of("")), new Label("loginStatus", Model.of("")) )
+* Use #setDefaultModel(new AnotherModelImplementation(object)) to change the way how Wicket access its components.
 
 ### Models and JavaBeans
  Wicket provides two special model classes in order to overcoming the impedance mismatch between web technologies and OO paradigm. These models are:
- 1. org.apache.wicket.model.PropertyModel;
- 2. org.apache.wicket.model.CompoundPropertyModel.
+ 
+ * org.apache.wicket.model.PropertyModel;
+ * org.apache.wicket.model.CompoundPropertyModel.
  
 #### Property Model
  By using a property model aproach you need to set each of fields of your class to its corresponding property in the view. So, wicket will keep the view and the data object conected and updated. Let's see an example:
@@ -94,8 +96,9 @@ You have always to provide a model for your components! If you try to set a data
  ```
  
  Note that PropertyModel has just one constructor with two parameters:
- 1. The serializable pojo;
- 2. The name of the property we want to read/write (Property expression).
+ 
+ * The serializable pojo;
+ * The name of the property we want to read/write (Property expression).
  
 ##### PropertyModel characteristics
 - Support dotted notation to select sub properties (e.g. new PropertyModel(pojoInstance, "property.subProperty"));
@@ -138,7 +141,7 @@ The purpose of FormComponent is to store the corresponding user input into its m
 	}
  ```
  
- As you can see we don't need to specify a PropertyModel for each component we have in view. Another important thing is that you should notice the id of the components are the same as the property name in our pojo. By default, CompoundPropertyModel consider that they are the same. However, for some reason you need to specify diferent ids in View and Pojo you can use the bind method like this:
+ As you can see we don't need to specify a PropertyModel for each component we have inside view. Another important thing is that you should notice the id of the components are the same as the property name in our pojo. By default, CompoundPropertyModel consider that they are the same. However, for some reason you need to specify diferent ids in View and Pojo you can use the bind method like this:
  
  ```
  public class LoginCompoundPropertyModelForm extends Form<Serializable> {
@@ -173,4 +176,15 @@ The purpose of FormComponent is to store the corresponding user input into its m
 - Label -> Used to bind labels in html file;
 - TextField -> Used to bind text fields in html file, without any particular behavior or restriction on the allowed values;
 - PasswordTextField -> SubType of TextField, must be used with an <input> tag with the attribute type set to "password". By default, it cleans its value at each request and it is required.  
+
+##### DropDownChoice
+In order to use the DropDownChoice we need to provide three parameters:
+- Id;
+- A model containing the current selected item. (Not required if we use CompoundPropertyModel);
+- A lista of options to display: Model or java.util.List;
+
+```
+List<String> fruits = Arrays.asList("apple", "strawberry", "watermelon");
+form.add(new DropDownChoice<String>("fruits", new Model(), fruits));
+```
 
