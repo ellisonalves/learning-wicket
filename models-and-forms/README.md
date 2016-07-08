@@ -188,3 +188,9 @@ List<String> fruits = Arrays.asList("apple", "strawberry", "watermelon");
 form.add(new DropDownChoice<String>("fruits", new Model(), fruits));
 ```
 
+But the example above is really simple. It is common that the information to be displayed comes from an data object (pojo) and in these cases we need to use the interface ChoiceRenderer as the following example:
+```
+IChoiceRenderer<? super Car> choiceRenderer = new ChoiceRenderer<>("name", "id");
+add(new DropDownChoice<Car>("cars", new Model<Car>(), Car.getCarList(), choiceRenderer));
+```
+
