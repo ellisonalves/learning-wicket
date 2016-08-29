@@ -1,36 +1,24 @@
 package com.ellisonalves.forms;
 
-import java.io.Serializable;
-
-import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.Form;
+import com.ellisonalves.pojo.Login;
 import org.apache.wicket.markup.html.form.PasswordTextField;
-import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.model.CompoundPropertyModel;
 
-import com.ellisonalves.pojo.Login;
+import java.io.Serializable;
 
-public class LoginCompoundPropertyModelForm extends Form<Serializable> {
+public class LoginCompoundPropertyModelForm extends BasicLoginForm<Login> {
 
-	private static final long	serialVersionUID	= 1L;
+    public LoginCompoundPropertyModelForm(String id) {
+        super(id);
 
-	private Login				login;
+        setDefaultModel(new CompoundPropertyModel<Serializable>(login));
 
-	public LoginCompoundPropertyModelForm(String id) {
-		super(id);
-		this.login = new Login();
+        add(
+                new RequiredTextField<Serializable>("username"),
+                new PasswordTextField("password")
+        );
 
-		setDefaultModel(new CompoundPropertyModel<Serializable>(login));
+    }
 
-		add(new Label("loginStatus"), new TextField<Serializable>("username"), new PasswordTextField(
-				"password"));
-	}
-
-	@Override
-	protected void onSubmit() {
-		if (login.getUsername().equals("test") && login.getPassword().equals("test"))
-			login.setLoginStatus("Congratulations!");
-		else
-			login.setLoginStatus("Wrong username or password!");
-	}
 }

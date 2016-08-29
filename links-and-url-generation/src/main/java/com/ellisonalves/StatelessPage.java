@@ -17,7 +17,7 @@ public class StatelessPage extends WebPage {
 	protected void onInitialize() {
 		super.onInitialize();
 		setStatelessHint(true);
-
+		
 		add(new StatelessLink<Object>("statelessLink") {
 			private static final long	serialVersionUID	= 1L;
 
@@ -28,5 +28,6 @@ public class StatelessPage extends WebPage {
 			}
 		});
 	}
+	
 
 }
