@@ -1,13 +1,10 @@
 package com.ellisonalves.pages;
 
-import com.ellisonalves.forms.DropDownChoiceForm;
+import com.ellisonalves.panels.DropDownChoicePanel;
 
 public class DropDownChoicePage extends HomePage {
 
-    private static final long serialVersionUID = 1L;
-
     public DropDownChoicePage() {
-        add(new DropDownChoiceForm("form"));
+        add(new DropDownChoicePanel("choicePanel"));
     }
-
 }

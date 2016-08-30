@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<body>
+<wicket:panel>
+    <h2 wicket:id="loginStatus"></h2>
+    <fieldset>
+        <legend>Login Form</legend>
+
+        <form action="loginForm" method="post" wicket:id="loginForm">
+            <p>
+                Username: <input wicket:id="username" type="text" id="username"/>
+            </p>
+            <p>
+                Password: <input wicket:id="password" type="password" id="password"/>
+            </p>
+            <p>
+                <input type="submit" name="Login" value="Login"/>
+            </p>
+        </form>
+    </fieldset>
+</wicket:panel>
+</body>
+</html>

@@ -1,13 +1,13 @@
 package com.ellisonalves.pages;
 
-import com.ellisonalves.forms.LoginCompoundPropertyModelForm;
-import org.apache.wicket.markup.html.panel.FeedbackPanel;
+import com.ellisonalves.panels.LoginFormPanel;
+import com.ellisonalves.pojo.Login;
+import org.apache.wicket.model.Model;
 
 public class LoginCompoundPropertyModelPage extends HomePage {
 
     public LoginCompoundPropertyModelPage() {
-        add(new FeedbackPanel("loginStatus"));
-        add(new LoginCompoundPropertyModelForm("loginForm"));
+        add(new LoginFormPanel("loginFormPanel", Model.of(new Login())));
     }
 
 }

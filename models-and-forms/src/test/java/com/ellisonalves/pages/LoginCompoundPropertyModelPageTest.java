@@ -1,6 +1,7 @@
 package com.ellisonalves.pages;
 
 import com.ellisonalves.WicketApplication;
+import com.ellisonalves.panels.LoginFormPanel;
 import org.apache.wicket.util.tester.FormTester;
 import org.apache.wicket.util.tester.WicketTester;
 import org.junit.Before;
@@ -16,22 +17,24 @@ public class LoginCompoundPropertyModelPageTest {
     @Before
     public void setUp() {
         tester = new WicketTester(new WicketApplication());
-        tester.startPage(LoginCompoundPropertyModelPage.class);
+        tester.startPage(new LoginCompoundPropertyModelPage());
         tester.assertRenderedPage(LoginCompoundPropertyModelPage.class);
     }
 
     @Test
     public void shouldRenderInItsInitialState() {
-        tester.assertEnabled("loginForm");
-        tester.assertEnabled("loginForm:username");
+        tester.assertComponent("loginFormPanel", LoginFormPanel.class);
 
-        tester.assertVisible("loginForm");
-        tester.assertVisible("loginForm:password");
+        tester.assertEnabled("loginFormPanel:loginForm");
+        tester.assertVisible("loginFormPanel:loginForm");
+
+        tester.assertEnabled("loginFormPanel:loginForm:username");
+        tester.assertVisible("loginFormPanel:loginForm:password");
     }
 
     @Test
     public void shouldReturnAnErrorWhenSubmitFormWithBlankValues() {
-        FormTester formTester = tester.newFormTester("loginForm", true);
+        FormTester formTester = tester.newFormTester("loginFormPanel:loginForm", true);
         formTester.submit();
 
         tester.assertErrorMessages(
@@ -42,7 +45,7 @@ public class LoginCompoundPropertyModelPageTest {
 
     @Test
     public void shouldReturnAnErrorMessageWhenValuesAreInvalid() {
-        FormTester formTester = tester.newFormTester("loginForm");
+        FormTester formTester = tester.newFormTester("loginFormPanel:loginForm");
         formTester.setValue("username", "Invalid user");
         formTester.setValue("password", "Invalid password");
         formTester.submit();
@@ -52,7 +55,7 @@ public class LoginCompoundPropertyModelPageTest {
 
     @Test
     public void shouldSubmitSuccessfullyWhenFieldsAreValid() throws Exception {
-        FormTester formTester = tester.newFormTester("loginForm");
+        FormTester formTester = tester.newFormTester("loginFormPanel:loginForm");
         formTester.setValue("username", "test");
         formTester.setValue("password", "test");
         formTester.submit();
