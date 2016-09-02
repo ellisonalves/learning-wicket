@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<body>
+<wicket:panel>
+    <form wicket:id="personsForm" method="post" action="personsForm">
+        <p>
+            <select wicket:id="persons" name="persons"></select>
+        </p>
+        <p>
+            <label>Name: </label>
+            <input wicket:id="name" name="name"/>
+        </p>
+        <p>
+            <label>Surname: </label>
+            <input wicket:id="surname" name="surname"/>
+        </p>
+        <p>
+            <label>Address: </label>
+            <input wicket:id="address" name="address"/>
+        </p>
+        <p>
+            <labels>Email:</labels>
+            <input wicket:id="email" name="email" type="email"/>
+        </p>
+
+        <input type="submit" name="Submit" value="Submit"/>
+    </form>
+</wicket:panel>
+</body>
+</html>

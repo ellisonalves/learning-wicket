@@ -1,9 +1,7 @@
 package com.ellisonalves.panels;
 
 import com.ellisonalves.LinkToPage;
-import com.ellisonalves.pages.DropDownChoicePage;
-import com.ellisonalves.pages.LoginCompoundPropertyModelPage;
-import com.ellisonalves.pages.LoginPropertyModelPage;
+import com.ellisonalves.pages.*;
 import org.apache.wicket.markup.html.panel.Panel;
 
 /**
@@ -17,6 +15,8 @@ public class LeftMenuPanel extends Panel {
         add(new LinkToPage("gotoLoginFormPropertyModel", LoginPropertyModelPage.class));
         add(new LinkToPage("gotoLoginFormCompoundPropertyModel", LoginCompoundPropertyModelPage.class));
         add(new LinkToPage("gotoDropDownChoiceComponent", DropDownChoicePage.class));
+        add(new LinkToPage("gotoModelChaining", ModelChainingPage.class));
+        add(new LinkToPage("gotoFormInDetails", FormInDetailsPage.class));
     }
 
 }

@@ -1,5 +1,6 @@
 package com.ellisonalves.panels;
 
+import com.ellisonalves.WicketApplication;
 import org.apache.wicket.util.tester.WicketTester;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +16,7 @@ public class LeftMenuPanelTest {
 
     @Before
     public void setUp() throws Exception {
-        wicketTester = new WicketTester();
+        wicketTester = new WicketTester(new WicketApplication());
     }
 
     @Test
@@ -25,6 +26,7 @@ public class LeftMenuPanelTest {
         assertNotNull(leftMenuPanel.get("gotoLoginFormPropertyModel"));
         assertNotNull(leftMenuPanel.get("gotoLoginFormCompoundPropertyModel"));
         assertNotNull(leftMenuPanel.get("gotoDropDownChoiceComponent"));
+        assertNotNull(leftMenuPanel.get("gotoModelChaining"));
     }
 
 }

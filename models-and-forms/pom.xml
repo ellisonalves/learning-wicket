@@ -52,6 +52,17 @@
             <artifactId>jetty-all</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-all</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.wicketstuff</groupId>
+            <artifactId>wicketstuff-serializer-fast2</artifactId>
+            <version>7.4.0</version>
+        </dependency>
+
     </dependencies>
 
 </project>
