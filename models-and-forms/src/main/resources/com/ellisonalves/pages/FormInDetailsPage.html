@@ -4,6 +4,56 @@
 
 <wicket:extend>
 
+    <div wicket:id="feedback"></div>
+
+    <form action="form" method="post" wicket:id="form">
+        <p>
+            <label for="email">Email: </label>
+            <input type="text" name="email" wicket:id="email" id="email"/>
+        </p>
+
+        <p>
+            <label for="dateValidator">Url: </label>
+            <input type="text" name="urlValidator" wicket:id="urlValidator" id="urlValidator"/>
+        </p>
+
+        <p>
+            <label for="email">Date: </label>
+            <input type="text" name="dateValidator" wicket:id="dateValidator" id="dateValidator"/>
+        </p>
+
+        <p>
+            <label for="rangeValidator">Range: </label>
+            <input type="text" name="rangeValidator" wicket:id="rangeValidator" id="rangeValidator"/>
+        </p>
+
+        <p>
+            <label for="stringValidator">String: </label>
+            <input type="text" name="stringValidator" wicket:id="stringValidator" id="stringValidator"/>
+        </p>
+
+        <p>
+            <label for="creditCardValidator">Credit Card: </label>
+            <input type="text" name="creditCardValidator" wicket:id="creditCardValidator" id="creditCardValidator"/>
+        </p>
+
+        <p>
+            <label for="passInput1">Equal: </label>
+            <input type="text" name="passInput1" wicket:id="passInput1"
+                   id="passInput1"/>
+            and
+            <input type="text" name="passInput2" wicket:id="passInput2"
+                   id="passInput2"/>
+        </p>
+
+        <p>
+            <label for="customValidator">Custom: </label>
+            <input type="text" name="customValidator" wicket:id="customValidator" id="customValidator"/>
+        </p>
+
+        <input type="submit" value="Submit">
+    </form>
+
 </wicket:extend>
 
 </body>

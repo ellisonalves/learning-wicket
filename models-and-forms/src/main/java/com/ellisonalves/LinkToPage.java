@@ -9,16 +9,18 @@ import org.apache.wicket.markup.html.link.Link;
  */
 public class LinkToPage extends Link {
 
-    private Class classRef;
+	private static final long	serialVersionUID	= 1L;
 
-    public LinkToPage(String id, Class classRef) {
-        super(id);
-        this.classRef = classRef;
-    }
+	private Class				classRef;
 
-    @Override
-    public void onClick() {
-        setResponsePage(classRef);
-    }
+	public LinkToPage(String id, Class classRef) {
+		super(id);
+		this.classRef = classRef;
+	}
+
+	@Override
+	public void onClick() {
+		setResponsePage(classRef);
+	}
 
 }

@@ -9,14 +9,16 @@ import org.apache.wicket.markup.html.panel.Panel;
  */
 public class LeftMenuPanel extends Panel {
 
-    public LeftMenuPanel(String id) {
-        super(id);
+	private static final long	serialVersionUID	= 1L;
 
-        add(new LinkToPage("gotoLoginFormPropertyModel", LoginPropertyModelPage.class));
-        add(new LinkToPage("gotoLoginFormCompoundPropertyModel", LoginCompoundPropertyModelPage.class));
-        add(new LinkToPage("gotoDropDownChoiceComponent", DropDownChoicePage.class));
-        add(new LinkToPage("gotoModelChaining", ModelChainingPage.class));
-        add(new LinkToPage("gotoFormInDetails", FormInDetailsPage.class));
-    }
+	public LeftMenuPanel(String id) {
+		super(id);
+
+		add(new LinkToPage("gotoLoginFormPropertyModel", LoginPropertyModelPage.class));
+		add(new LinkToPage("gotoLoginFormCompoundPropertyModel", LoginCompoundPropertyModelPage.class));
+		add(new LinkToPage("gotoDropDownChoiceComponent", DropDownChoicePage.class));
+		add(new LinkToPage("gotoModelChaining", ModelChainingPage.class));
+		add(new LinkToPage("gotoFormInDetails", FormInDetailsPage.class));
+	}
 
 }
